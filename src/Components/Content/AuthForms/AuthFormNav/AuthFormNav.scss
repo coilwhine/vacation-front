@@ -1,0 +1,36 @@
+.AuthFormNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3em;
+
+    .auth-btn-wraper {
+        display: flex;
+        flex-direction: column;
+        width: 4em;
+
+        button {
+            border: none;
+            background-color: transparent;
+            font-size: 1em;
+            font-weight: bold;
+            transition: 200ms;
+            padding: 5px;
+            color: var(--text-color);
+        }
+
+        &::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: var(--main-color);
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        &.authNavActive::after {
+            width: 100%;
+        }
+    }
+}

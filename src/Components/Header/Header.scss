@@ -1,0 +1,13 @@
+.Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--main-color);
+
+    h1 {
+        font-size: 4em;
+        font-family: 'Satisfy', cursive;
+        color: var(--secondary-text-color);
+    }
+}

@@ -1,0 +1,33 @@
+.ErrorPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--main-color);
+
+    .error-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 30px;
+        border-radius: var(--big-border-radius);
+        box-shadow: var(--big-shadow);
+        background-color: var(--secondary-text-color);
+
+        h1 {
+            font-size: 4em;
+        }
+
+        p {
+            font-size: 1.5em;
+        }
+
+        i {
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+    }
+}

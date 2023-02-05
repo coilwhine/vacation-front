@@ -1,0 +1,25 @@
+:root {
+  --main-color: #f6c2c2;
+  --secondary-color: #0f7a8a;
+  --text-color: #202020;
+  --secondary-text-color: white;
+  --error-color: rgb(184, 48, 48);
+
+  --small-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  --big-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+  --big-border-radius: 10px;
+  --small-border-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+button,
+a,
+label {
+  cursor: pointer;
+}

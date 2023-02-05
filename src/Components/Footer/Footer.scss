@@ -1,0 +1,16 @@
+.Footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--main-color);
+
+    #all-rights-reserved-text {
+        font-size: 1em;
+        font-weight: 500;
+        color: var(--secondary-text-color);
+    }
+}
