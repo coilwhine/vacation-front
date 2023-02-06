@@ -1,5 +1,89 @@
 .Card {
-    width: 100px;
-    height: 100px;
-    background-color: var(--secondary-color);
+    display: grid;
+    grid-template-rows: 2fr;
+    justify-content: space-between;
+    width: 230px;
+    padding: 10px;
+    box-shadow: var(--big-shadow);
+    border-radius: var(--big-border-radius);
+    background-color: var(--secondary-text-color);
+
+
+
+
+    .card-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        height: 100px;
+        border-radius: var(--small-border-radius);
+        background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4)), url("https://images.unsplash.com/photo-1566371486490-560ded23b5e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80");
+        background-size: cover;
+
+        .card-header-content {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+
+            .card-header-top {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+
+    .card-body {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .card-dates {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            height: 20px;
+            gap: 5px;
+            color: var(--secondary-color);
+
+            .card-date {
+                font-size: 0.8em;
+            }
+        }
+
+        .card-p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .card-price-wraper {
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .card-price {
+                position: absolute;
+                padding: 5px 20px;
+                font-size: 1.3em;
+                color: var(--secondary-text-color);
+                text-shadow: var(--small-shadow);
+                border-radius: var(--small-border-radius);
+                box-shadow: var(--small-shadow);
+                background-color: var(--secondary-color);
+            }
+        }
+    }
 }

@@ -1,4 +1,4 @@
-import axios, { AxiosError, ResponseType } from "axios";
+import axios, { ResponseType } from "axios";
 import { LoginFormData } from "../Components/Content/AuthForms/LoginForm/LoginForm";
 import { RegistrationFormData } from "../Components/Content/AuthForms/RegistrationForm/RegistrationForm";
 import fetchURL from "../Utils/fetchURL";

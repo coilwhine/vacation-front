@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { authToken } from "../../../../App/authTokenSlice";
+import { login } from "../../../../App/authTokenSlice";
 import authServices from "../../../../Services/authServices";
 import "./RegistrationForm.scss";
 
@@ -22,9 +22,8 @@ function RegistrationForm(): JSX.Element {
     async function onSubmitRegistration(data: RegistrationFormData) {
         try {
             const token = await authServices.registerNewUser(data)
-            window.localStorage.setItem('token', token);
             setEmailTaken(false);
-            dispatch(authToken(true))
+            dispatch(login(token))
         } catch (err: AxiosError | any) {
             console.error(err)
             if (err.response.status === 401) {

@@ -1,29 +1,26 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authToken } from "../../App/authTokenSlice";
-import AuthForm from "./AuthForms/AuthForms";
+import { login } from "../../App/authTokenSlice";
+import AuthForms from "./AuthForms/AuthForms";
 import "./Content.scss";
 import Vacations from "./Vacations/Vacations";
 
 function Content(): JSX.Element {
 
-    const logedIn = useSelector((state: any) => state.authToken.value);
+    const isloged = useSelector((state: any) => state.authToken);
     const dispatch = useDispatch();
 
     useEffect(() => {
         const token = window.localStorage.getItem('token')
+        console.log(token)
         if (token) {
-            dispatch(authToken(true))
-        } else {
-            dispatch(authToken(false))
+            dispatch(login(token))
         }
-        console.log(logedIn)
-    }, [logedIn])
+    }, [])
 
     return (
         <div className="Content">
-
-            {logedIn ? <Vacations /> : <AuthForm />}
+            {isloged ? <Vacations /> : <AuthForms />}
         </div>
     );
 }

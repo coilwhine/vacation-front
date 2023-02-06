@@ -7,6 +7,12 @@ function Cards(): JSX.Element {
             <Card />
             <Card />
             <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
         </div>
     );
 }

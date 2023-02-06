@@ -1,3 +1,73 @@
 .vacationsNav {
-	
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    background-color: var(--main-color);
+    border-radius: var(--big-border-radius);
+    box-shadow: var(--big-shadow);
+
+    .nav-div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100px;
+
+        span {
+            font-weight: 700;
+        }
+
+        .toggle-div {
+            width: 32px;
+
+            input[type="checkbox"].toggle {
+                position: absolute;
+                opacity: 0;
+            }
+
+            input[type="checkbox"].toggle+label {
+                position: relative;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            input[type="checkbox"].toggle:focus+label::before {
+                outline: 1px solid #000000;
+            }
+
+            /* Background */
+
+            input[type="checkbox"].toggle+label::before {
+                content: '';
+                width: 2em;
+                height: 1.1em;
+                background-color: var(--secondary-text-color);
+                border-radius: 2em;
+                transition: background-color 200ms ease-in-out;
+            }
+
+            input[type="checkbox"].toggle:checked+label::before {
+                background-color: var(--secondary-text-color);
+            }
+
+            /* Ball */
+
+            input[type="checkbox"].toggle+label::after {
+                position: absolute;
+                left: 0.1em;
+                content: '';
+                width: 0.9em;
+                height: 0.9em;
+                background-color: var(--main-color);
+                border-radius: 2em;
+                transition: background-color 200ms ease-in-out, transform 200ms ease-in-out;
+            }
+
+            input[type="checkbox"].toggle:checked+label::after {
+                transform: translateX(100%);
+                background-color: var(--secondary-color);
+            }
+        }
+    }
 }

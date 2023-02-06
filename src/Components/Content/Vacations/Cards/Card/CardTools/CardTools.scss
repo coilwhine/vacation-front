@@ -1,0 +1,26 @@
+.CardTools {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+
+    .tools-btn {
+        box-sizing: border-box;
+        border: none;
+        width: 2em;
+        height: 2em;
+        font-size: 0.8em;
+        border-radius: var(--small-border-radius);
+        background-color: var(--secondary-text-color);
+
+        &.card-delete-btn:hover {
+            color: var(--error-color);
+            background-color: var(--body-color);
+        }
+
+        &.card-edit-btn:hover {
+            color: var(--secondary-color);
+            background-color: var(--body-color);
+        }
+    }
+}

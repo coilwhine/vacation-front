@@ -2,7 +2,7 @@ import { AxiosError } from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { authToken } from "../../../../App/authTokenSlice";
+import { login } from "../../../../App/authTokenSlice";
 import authServices from "../../../../Services/authServices";
 import "./LoginForm.scss";
 
@@ -23,8 +23,7 @@ function LoginForm(): JSX.Element {
             const token = await authServices.loginUser(data)
             setEmailValid(true);
             setPasswordValid(true);
-            window.localStorage.setItem('token', token);
-            dispatch(authToken(true))
+            dispatch(login(token))
         } catch (err: AxiosError | any) {
             console.error(err)
             if (err.response.status === 404) {

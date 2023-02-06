@@ -4,16 +4,16 @@ import AuthFormNav from "./AuthFormNav/AuthFormNav";
 import LoginForm from "./LoginForm/LoginForm";
 import RegistrationForm from "./RegistrationForm/RegistrationForm";
 
-function AuthForm(): JSX.Element {
+function AuthForms(): JSX.Element {
 
-    const authFormToggler = useSelector((state: any) => state.authForm.value);
+    const authFormToggler = useSelector((state: any) => state.authForm);
 
     return (
-        <div className="AuthForm">
+        <div className="AuthForms">
             <AuthFormNav />
             {authFormToggler === 'login' ? <LoginForm /> : <RegistrationForm />}
         </div>
     );
 }
 
-export default AuthForm;
+export default AuthForms;

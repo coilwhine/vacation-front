@@ -1,0 +1,10 @@
+.LikeBtn {
+    font-size: 1.5em;
+    color: var(--disabled-color);
+    color: var(--loved-color);
+
+    &:hover {
+        cursor: pointer;
+        color: var(--main-color);
+    }
+}

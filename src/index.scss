@@ -1,12 +1,17 @@
 :root {
+  --body-color: #f8f5ed;
+
   --main-color: #f6c2c2;
   --secondary-color: #0f7a8a;
   --text-color: #202020;
   --secondary-text-color: white;
   --error-color: rgb(184, 48, 48);
 
+  --loved-color: rgb(210, 76, 76);
+  --disabled-color: rgb(166, 166, 166);
+
   --small-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  --big-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  --big-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
 
   --big-border-radius: 10px;
   --small-border-radius: 5px;
@@ -22,4 +27,8 @@ button,
 a,
 label {
   cursor: pointer;
+}
+
+body {
+  background-color: var(--body-color);
 }
