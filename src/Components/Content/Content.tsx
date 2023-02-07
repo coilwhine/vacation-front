@@ -12,7 +12,6 @@ function Content(): JSX.Element {
 
     useEffect(() => {
         const token = window.localStorage.getItem('token')
-        console.log(token)
         if (token) {
             dispatch(login(token))
         }

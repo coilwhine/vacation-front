@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
+import vacationServices from "../../../../../../Services/vacationServices";
 import "./LikeBtn.scss";
 
-function LikeBtn(): JSX.Element {
+function LikeBtn(props: any): JSX.Element {
 
     return (
-        <div className="LikeBtn">
+        <div className={props.likeState ? "LikeBtn liked" : "LikeBtn"} onClick={props.onClickEvent}>
+            <span className="like-counter">{props.numberOfLikes}</span>
             <AiFillHeart />
         </div>
     );

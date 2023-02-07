@@ -3,7 +3,7 @@ export function dateFormater(date: string) {
 
     const year = dateArray[0]
     const month = dateArray[1]
-    const day = dateArray[2]
+    const day = dateArray[2][0] + dateArray[2][1]
     const fullDate = `${day}.${month}.${year}`
 
     const formtedDate = {

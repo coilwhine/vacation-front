@@ -1,7 +1,6 @@
 .vacationsNav {
     display: inline-flex;
-    flex-direction: column;
-    gap: 5px;
+    gap: 30px;
     padding: 10px;
     background-color: var(--main-color);
     border-radius: var(--big-border-radius);
@@ -11,10 +10,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 100px;
+        gap: 10px;
 
-        span {
-            font-weight: 700;
+        .text {
+            font-weight: 500;
         }
 
         .toggle-div {
