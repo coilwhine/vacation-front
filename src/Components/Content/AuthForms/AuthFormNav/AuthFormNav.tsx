@@ -4,7 +4,6 @@ import "./AuthFormNav.scss";
 
 function AuthFormNav(): JSX.Element {
     const FormToggler = useSelector((state: any) => state.authForm);
-    console.log(FormToggler)
     const dispatch = useDispatch();
 
     function clickOnLogin() {

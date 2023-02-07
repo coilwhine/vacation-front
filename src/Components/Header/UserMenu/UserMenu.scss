@@ -1,0 +1,71 @@
+.UserMenu {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    right: 2em;
+    height: 2em;
+    cursor: pointer;
+
+
+    .main-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        color: var(--secondary-color);
+        font-weight: bold;
+        font-size: 0.8em;
+        background-color: var(--secondary-text-color);
+        box-shadow: var(--big-shadow);
+        width: 50px;
+        height: 50px;
+        padding: 1em;
+        border-radius: 50%;
+    }
+
+    .display-name {
+        position: relative;
+        top: 2px;
+        width: 100%;
+        padding: 10px;
+        font-weight: bold;
+        color: var(--text-color);
+        background-color: var(--secondary-text-color);
+        box-shadow: var(--small-shadow);
+        border-radius: var(--small-border-radius);
+    }
+
+    .user-menu {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: 10px;
+        top: 3em;
+        right: 2.8em;
+        padding: 10px 15px;
+        background-color: var(--secondary-text-color);
+        box-shadow: var(--big-shadow);
+        border-radius: var(--big-border-radius);
+
+        button {
+            border: none;
+            background-color: transparent;
+            width: 8em;
+            font-weight: bold;
+            color: var(--secondary-color);
+
+            &.logout-btn {
+                color: var(--error-color);
+            }
+
+            &:hover {
+                color: var(--text-color);
+            }
+        }
+    }
+}

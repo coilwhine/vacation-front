@@ -1,6 +1,6 @@
 export enum UserRole {
-    user = 'USER',
-    admin = 'ADMIN'
+    user,
+    admin
 }
 
 export interface TokenModel {
