@@ -19,6 +19,12 @@ class VacationServices {
         return response.data;
     }
 
+    async deleteVacation(vacationId: number) {
+
+        const response = await axios.delete<ResponseType>(`${fetchURL.vacationsFetchURL}deletevacation/${vacationId}`);
+        return response.data;
+    }
+
     async postLikeVacation(vacationId: number) {
 
         const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}like`, { vacation: vacationId }, {

@@ -27,33 +27,35 @@ function UserMenu(): JSX.Element {
     }
 
     return (
-        <div className="UserMenu" ref={refOne}>
+        <>
+            <div className="UserMenu" ref={refOne}>
 
-            {user && <span className="display-name">{`${user.firstName} ${user.lastName}`}</span>}
-            {user && <button className="main-btn">Menu</button>}
-            {openMenu && <div className="user-menu">
+                {user && <span className="display-name">{`${user.firstName} ${user.lastName}`}</span>}
+                {user && <button className="main-btn">Menu</button>}
+                {openMenu && <div className="user-menu">
 
-                {user && user.userRole === UserRole.admin && <button onClick={() => {
-                    setOpenMenu(false)
-                }}>reports</button>}
+                    {user && user.userRole === UserRole.admin && <button onClick={() => {
+                        setOpenMenu(false)
+                    }}>reports</button>}
 
-                {user && user.userRole === UserRole.admin && <button onClick={() => {
-                    setOpenMenu(false)
-                }}>download file</button>}
+                    {user && user.userRole === UserRole.admin && <button onClick={() => {
+                        setOpenMenu(false)
+                    }}>download file</button>}
 
-                {user && user.userRole === UserRole.admin && <button onClick={() => {
-                    setOpenMenu(false)
-                    setOpenNewVacationForm(true)
-                }}>add vacation</button>}
+                    {user && user.userRole === UserRole.admin && <button onClick={() => {
+                        setOpenMenu(false)
+                        setOpenNewVacationForm(true)
+                    }}>add vacation</button>}
 
-                <button className="logout-btn" onClick={() => {
-                    dispatch(logout())
-                    setOpenMenu(false)
-                }}>logout</button>
-            </div>}
+                    <button className="logout-btn" onClick={() => {
+                        dispatch(logout())
+                        setOpenMenu(false)
+                    }}>logout</button>
+                </div>}
 
+            </div>
             {openNewVacationForm && <AddVacationForm isOpen={setOpenNewVacationForm} />}
-        </div>
+        </>
     );
 }
 

@@ -1,7 +1,8 @@
 import { AxiosError } from "axios";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setRender } from "../../../../App/renderSlice copy";
 import { VacationModel } from "../../../../Models/VacationModel";
 import vacationServices from "../../../../Services/vacationServices";
 import "./AddVacationForm.scss";
@@ -9,6 +10,7 @@ import "./AddVacationForm.scss";
 function AddVacationForm(props: any): JSX.Element {
 
     const dispatch = useDispatch();
+    const render = useSelector((state: any) => state.render);
     const { register, handleSubmit, reset } = useForm<VacationModel>();
 
     useEffect(() => {
@@ -19,6 +21,7 @@ function AddVacationForm(props: any): JSX.Element {
         try {
             const token = await vacationServices.postNewVacation(data)
             reset()
+            dispatch(setRender(render + 1))
         } catch (err: AxiosError | any) {
             console.error(err)
         }
@@ -30,7 +33,7 @@ function AddVacationForm(props: any): JSX.Element {
         if (!refOne.current.contains(e.target)) {
             props.isOpen(false);
         } else {
-            props.isOpen(false);
+            props.isOpen(true);
         }
     }
 

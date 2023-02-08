@@ -6,12 +6,16 @@ import LikeBtn from "./LikeBtn/LikeBtn";
 import { VacationModel } from "../../../../../Models/VacationModel";
 import vacationServices from "../../../../../Services/vacationServices";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setRender } from "../../../../../App/renderSlice copy";
 
 function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
 
+    const dispatch = useDispatch();
     const [isLiked, setIsLiked] = useState<boolean>(false)
-    const [render, setRender] = useState<number>(0)
     const [likes, setLikes] = useState(0)
+    const render = useSelector((state: any) => state.render);
+
 
     useEffect(() => {
         vacationServices.getVacationLikes(cardData.id).then((res: any) => {
@@ -40,10 +44,10 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
     async function likeBtnFunc() {
         if (isLiked) {
             await vacationServices.postUnLikeVacation(cardData.id)
-            setRender(render + 1)
+            dispatch(setRender(render + 1))
         } else if (!isLiked) {
             await vacationServices.postLikeVacation(cardData.id)
-            setRender(render + 1)
+            dispatch(setRender(render + 1))
         }
     }
 
@@ -55,7 +59,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
                         <h2>{cardData.destination}</h2>
                         <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />
                     </div>
-                    <CardTools />
+                    <CardTools cardId={cardData.id} setRender={setRender} render={render} />
                 </div>
             </header>
             <div className="card-body">
