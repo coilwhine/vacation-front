@@ -1,4 +1,5 @@
 import axios from "axios";
+import { VacationModel } from "../Models/VacationModel";
 import fetchURL from "../Utils/fetchURL";
 
 class VacationServices {
@@ -9,6 +10,12 @@ class VacationServices {
 
     async getVacationById(id: string) {
         const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}${id}`)
+        return response.data;
+    }
+
+    async postNewVacation(vacation: VacationModel) {
+
+        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}addvacation`, { ...vacation });
         return response.data;
     }
 

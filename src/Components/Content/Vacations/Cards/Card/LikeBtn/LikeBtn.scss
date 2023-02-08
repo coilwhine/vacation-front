@@ -1,21 +1,27 @@
 .LikeBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-    font-size: 1.5em;
-    color: var(--disabled-color);
+    padding: 3px;
 
     &:hover {
         cursor: pointer;
         color: var(--main-color);
     }
 
-    &.liked {
-        color: var(--loved-color);
+    .like-wraper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2px;
+        font-size: 1.5em;
+        color: var(--disabled-color);
+
+        &.liked {
+            color: var(--loved-color);
+        }
+
+        .like-counter {
+            font-size: 0.7em;
+        }
     }
 
-    .like-counter {
-        font-size: 0.7em;
-    }
+
 }

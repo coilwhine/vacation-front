@@ -53,7 +53,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
                 <div className="card-header-content">
                     <div className="card-header-top">
                         <h2>{cardData.destination}</h2>
-                        <LikeBtn key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />
+                        <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />
                     </div>
                     <CardTools />
                 </div>
