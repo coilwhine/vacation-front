@@ -8,12 +8,16 @@ import vacationServices from "../../../../../Services/vacationServices";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setRender } from "../../../../../App/renderSlice copy";
+import { UserModel } from "../../../../../Models/UserModel";
+import DeletePopup from "./DeletePopup/DeletePopup";
 
 function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
 
     const dispatch = useDispatch();
+    const userData: UserModel = useSelector((state: any) => state.authToken);
     const [isLiked, setIsLiked] = useState<boolean>(false)
     const [likes, setLikes] = useState(0)
+    const [deletePopup, setDeletePopUp] = useState(false)
     const render = useSelector((state: any) => state.render);
 
 
@@ -25,9 +29,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
             })
             setLikes(likeCounter)
         })
-    }, [render])
 
-    useEffect(() => {
         vacationServices.getUserLikedVacation().then((res: any) => {
             const arrayOfMatchingLikes = res.filter((like: { user_id: number, vacation_id: number }) => {
                 return +cardData.id === +like.vacation_id;
@@ -52,29 +54,32 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
     }
 
     return (
-        <div className="Card">
-            <header className="card-header">
-                <div className="card-header-content">
-                    <div className="card-header-top">
-                        <h2>{cardData.destination}</h2>
-                        <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />
+        <>
+            <div className="Card">
+                <header className="card-header">
+                    <div className="card-header-content">
+                        <div className="card-header-top">
+                            <h2>{cardData.destination}</h2>
+                            {userData.userRole === 0 && <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />}
+                        </div>
+                        {userData.userRole === 1 && <CardTools cardId={cardData.id} delPopUp={setDeletePopUp} />}
                     </div>
-                    <CardTools cardId={cardData.id} setRender={setRender} render={render} />
-                </div>
-            </header>
-            <div className="card-body">
-                <div className="card-dates">
-                    <AiFillCalendar />
-                    <span className="card-date">{dateFormater(cardData.startDate).fullDate}</span>
-                    <span className="card-date">-</span>
-                    <span className="card-date">{dateFormater(cardData.endDate).fullDate}</span>
-                </div>
-                <p className="card-p">{cardData.description}</p>
-                <div className="card-price-wraper">
-                    <h2 className="card-price">{`${cardData.price}$`}</h2>
+                </header>
+                <div className="card-body">
+                    <div className="card-dates">
+                        <AiFillCalendar />
+                        <span className="card-date">{dateFormater(cardData.startDate).fullDate}</span>
+                        <span className="card-date">-</span>
+                        <span className="card-date">{dateFormater(cardData.endDate).fullDate}</span>
+                    </div>
+                    <p className="card-p">{cardData.description}</p>
+                    <div className="card-price-wraper">
+                        <h2 className="card-price">{`${cardData.price}$`}</h2>
+                    </div>
                 </div>
             </div>
-        </div>
+            {deletePopup && <DeletePopup cardId={cardData.id} popUpState={setDeletePopUp} />}
+        </>
     );
 }
 

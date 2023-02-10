@@ -13,9 +13,9 @@ class VacationServices {
         return response.data;
     }
 
-    async postNewVacation(vacation: VacationModel) {
+    async postNewVacation(vacation: FormData) {
 
-        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}addvacation`, { ...vacation });
+        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}addvacation`, vacation);
         return response.data;
     }
 

@@ -34,7 +34,7 @@ function RegistrationForm(): JSX.Element {
 
     return (
         <div className="RegistrationForm">
-            <form onSubmit={handleSubmit(onSubmitRegistration)}>
+            <form className="main-form" onSubmit={handleSubmit(onSubmitRegistration)}>
                 <div className="form-div">
                     <label className="form-label" htmlFor="register-firstName-input">first name</label>
                     <input id="register-firstName-input" className="form-input" type="text" {...register("firstName")} required />

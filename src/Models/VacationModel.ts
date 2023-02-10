@@ -5,5 +5,5 @@ export interface VacationModel {
     startDate: string,
     endDate: string,
     price: number,
-    image: string
+    image?: string
 }

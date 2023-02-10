@@ -1,21 +1,10 @@
 import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { setRender } from "../../../../../../App/renderSlice copy";
-import vacationServices from "../../../../../../Services/vacationServices";
 import "./CardTools.scss";
 
 function CardTools(props: any): JSX.Element {
 
-    const dispatch = useDispatch();
-    const render = useSelector((state: any) => state.render);
-
     async function deleteBtnFunc() {
-        try {
-            await vacationServices.deleteVacation(props.cardId)
-            dispatch(setRender(render + 1))
-        } catch (error) {
-            console.error(error)
-        }
+        props.delPopUp(true)
     }
 
     return (

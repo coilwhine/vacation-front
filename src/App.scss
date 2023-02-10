@@ -1,11 +1,11 @@
 .App {
-    form {
+    .main-form {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 20px;
+        gap: 10px;
         padding: 2em;
         width: 100%;
         border-radius: var(--big-border-radius);
@@ -16,7 +16,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 5px;
+            gap: 3px;
             align-items: center;
             width: 100%;
 
@@ -29,11 +29,24 @@
             .form-input {
                 box-sizing: border-box;
                 border-style: none;
-                height: 3em;
+                height: 2.5em;
                 width: 100%;
                 padding: 1em;
                 box-shadow: var(--small-shadow);
                 border-radius: var(--small-border-radius);
+                background-color: white;
+
+                &.form-textarea {
+                    height: 5em;
+                    resize: none;
+                }
+
+                &.form-img {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 5em;
+                }
             }
 
             .error-span {
@@ -47,6 +60,7 @@
             width: 100%;
             color: var(--secondary-text-color);
             font-weight: 700;
+            margin-top: 10px;
             box-shadow: var(--big-shadow);
             background-color: var(--secondary-color);
             border-radius: var(--small-border-radius);

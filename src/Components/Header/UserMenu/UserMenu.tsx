@@ -14,14 +14,16 @@ function UserMenu(): JSX.Element {
 
     useEffect(() => {
         document.addEventListener("click", handleClickOutside, true);
+
+        return () => document.removeEventListener("click", handleClickOutside);
     }, []);
 
     const refOne = useRef<any | null>(null);
 
-    function handleClickOutside(e: any) {
-        if (!refOne.current.contains(e.target)) {
+    function handleClickOutside(e: any): void {
+        if (refOne && !refOne.current.contains(e.target)) {
             setOpenMenu(false);
-        } else {
+        } else if (refOne) {
             setOpenMenu(true);
         }
     }

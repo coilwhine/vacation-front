@@ -38,7 +38,7 @@ function LoginForm(): JSX.Element {
 
     return (
         <div className="LoginForm">
-            <form onSubmit={handleSubmit(onSubmitLogin)}>
+            <form className="main-form" onSubmit={handleSubmit(onSubmitLogin)}>
                 <div className="form-div">
                     <label className="form-label" htmlFor="login-email-input">email</label>
                     <input id="login-email-input" className="form-input" type="email" {...register("email")} required />
