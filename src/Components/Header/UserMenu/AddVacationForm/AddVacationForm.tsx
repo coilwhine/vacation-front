@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setRender } from "../../../../App/renderSlice copy";
 import { VacationModel } from "../../../../Models/VacationModel";
 import vacationServices from "../../../../Services/vacationServices";
+import { useOnClickOutside } from "../../../../Utils/onClickOutSideHook";
 import "./AddVacationForm.scss";
 
 function AddVacationForm(props: any): JSX.Element {
@@ -13,14 +14,6 @@ function AddVacationForm(props: any): JSX.Element {
     const render = useSelector((state: any) => state.render);
     const { register, handleSubmit, reset } = useForm<VacationModel>();
     const [selectedImage, setSelectedImage] = useState<any>();
-
-    useEffect(() => {
-        document.addEventListener("click", handleClickOutside, true);
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, []);
 
     async function onSubmitVacation(data: VacationModel) {
         try {
@@ -40,16 +33,8 @@ function AddVacationForm(props: any): JSX.Element {
         }
     }
 
-    const refOne = useRef<any | null>(null);
-
-    function handleClickOutside(e: any): void {
-        if (!refOne) return;
-        if (!refOne.current.contains(e.target)) {
-            props.isOpen(false);
-        } else if (refOne) {
-            props.isOpen(true);
-        }
-    }
+    const refOne = useRef<any>();
+    useOnClickOutside(refOne, () => props.isOpen(false))
 
     return (
         <div className="AddVacationForm" ref={refOne}>
