@@ -6,6 +6,19 @@
     width: 20em;
     z-index: 1;
 
+    .warning-text {
+        padding: 1em;
+        text-align: center;
+        font-weight: bold;
+        border-radius: var(--small-border-radius);
+        box-shadow: var(--small-shadow);
+        background-color: var(--secondary-text-color);
+    }
+
+    .delete-text {
+        color: var(--error-color);
+    }
+
     .btns {
         display: flex;
         justify-content: center;

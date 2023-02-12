@@ -1,0 +1,53 @@
+.PageNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+
+    .page {
+        position: relative;
+        top: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2em;
+        height: 2em;
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--text-color);
+        background-color: var(--main-color);
+        border-radius: var(--small-border-radius);
+        box-shadow: var(--small-shadow);
+        transition: 200ms ease-in-out;
+
+
+        &:hover {
+            top: 1px;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+
+        &.page-selected {
+            color: var(--secondary-text-color);
+            background-color: var(--secondary-color);
+        }
+
+        &.dsiabled-page {
+            color: white;
+            background-color: grey;
+
+            &:hover {
+                position: static;
+            }
+
+            &:active {
+                box-shadow: var(--small-shadow);
+            }
+        }
+
+
+    }
+}

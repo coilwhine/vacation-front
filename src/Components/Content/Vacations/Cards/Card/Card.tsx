@@ -60,7 +60,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
                     <div className="card-header-content">
                         <div className="card-header-top">
                             <h2>{cardData.destination}</h2>
-                            {userData.userRole === 0 && <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />}
+                            {userData.userRole !== 1 && <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />}
                         </div>
                         {userData.userRole === 1 && <CardTools cardId={cardData.id} delPopUp={setDeletePopUp} />}
                     </div>

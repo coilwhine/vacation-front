@@ -1,10 +1,28 @@
 import axios from "axios";
-import { VacationModel } from "../Models/VacationModel";
 import fetchURL from "../Utils/fetchURL";
 
 class VacationServices {
+
+
+
     async getAllVacations() {
-        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}vacations`)
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}`)
+        return response.data;
+    }
+
+    async getVacationsByPage(user: any, page: number, liked: boolean, present: boolean, future: boolean) {
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}page`, {
+            params: {
+                page: page,
+                liked: liked,
+                present: present,
+                future: future
+            },
+            headers: {
+                authentication: window.localStorage.getItem('token'),
+                userId: user.sub
+            }
+        })
         return response.data;
     }
 
@@ -15,21 +33,20 @@ class VacationServices {
 
     async postNewVacation(vacation: FormData) {
 
-        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}addvacation`, vacation);
+        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}`, vacation);
         return response.data;
     }
 
     async deleteVacation(vacationId: number) {
 
-        const response = await axios.delete<ResponseType>(`${fetchURL.vacationsFetchURL}deletevacation/${vacationId}`);
+        const response = await axios.delete<ResponseType>(`${fetchURL.vacationsFetchURL}${vacationId}`);
         return response.data;
     }
 
     async postLikeVacation(vacationId: number) {
-
         const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}like`, { vacation: vacationId }, {
             headers: {
-                authentication: window.localStorage.getItem('token')
+                authentication: window.localStorage.getItem('token'),
             }
         });
         return response.data;
@@ -57,7 +74,7 @@ class VacationServices {
 
     async getVacationLikes(id: number) {
 
-        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}vacationlikes`, { id });
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}vacationlikes`, { params: { id: id } });
         return response.data;
     }
 

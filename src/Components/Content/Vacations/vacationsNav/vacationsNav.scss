@@ -67,6 +67,20 @@
                 transform: translateX(100%);
                 background-color: var(--secondary-color);
             }
+
+            //disabled
+
+            input[type="checkbox"].toggle:disabled+label::before {
+                background-color: #efefef;
+            }
+
+            input[type="checkbox"].toggle:disabled+label::after {
+                background-color: #d6d6d6;
+            }
+        }
+
+        .heart {
+            color: var(--error-color);
         }
     }
 }

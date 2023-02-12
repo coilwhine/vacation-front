@@ -21,7 +21,7 @@ function DeletePopup(props: any): JSX.Element {
     return (
         <div className="DeletePopup">
             <div className="main-form">
-                <span>are you shure you want to delete this vacation?</span>
+                <span className="warning-text">Are you sure you want to <span className="delete-text">delete</span> this item?</span>
 
                 <div className="btns">
                     <button className="form-btn" onClick={() => props.popUpState(false)}>Noooo! </button>

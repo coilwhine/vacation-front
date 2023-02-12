@@ -14,8 +14,24 @@ function AddVacationForm(props: any): JSX.Element {
     const render = useSelector((state: any) => state.render);
     const { register, handleSubmit, reset } = useForm<VacationModel>();
     const [selectedImage, setSelectedImage] = useState<any>();
+    const [invalidStartDate, setInvalidStartDate] = useState<boolean>(false);
+    const [invalidEndDate, setInvalidEndDate] = useState<boolean>(false);
 
     async function onSubmitVacation(data: VacationModel) {
+
+        setInvalidStartDate(false)
+        setInvalidEndDate(false)
+
+        if (Date.parse(data.startDate) < (Date.parse(new Date().toString()))) {
+            setInvalidStartDate(true)
+            return
+        }
+
+        if (Date.parse(data.startDate) > Date.parse(data.endDate)) {
+            setInvalidEndDate(true)
+            return
+        }
+
         try {
             const formDataVacation = new FormData();
             formDataVacation.append("destination", data.destination)
@@ -50,14 +66,16 @@ function AddVacationForm(props: any): JSX.Element {
                 <div className="form-div">
                     <label className="form-label" htmlFor="vacation-startDate-input">start</label>
                     <input id="vacation-startDate-input" className="form-input" type="date" {...register("startDate")} required />
+                    {invalidStartDate && <span className="error-span">invalid start date</span>}
                 </div>
                 <div className="form-div">
                     <label className="form-label" htmlFor="vacation-endDate-input">end</label>
                     <input id="vacation-endDate-input" className="form-input" type="date" {...register("endDate")} required />
+                    {invalidEndDate && <span className="error-span">invalid end date</span>}
                 </div>
                 <div className="form-div">
                     <label className="form-label" htmlFor="vacation-price-input">price</label>
-                    <input id="vacation-price-input" className="form-input" type="number" {...register("price")} required />
+                    <input id="vacation-price-input" className="form-input" type="number" {...register("price")} min="0" max="10000" required />
                 </div>
 
                 <div className="form-div">
