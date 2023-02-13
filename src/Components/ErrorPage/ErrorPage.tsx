@@ -2,7 +2,7 @@ import { useRouteError } from "react-router-dom";
 import "./ErrorPage.scss";
 
 function ErrorPage(): JSX.Element {
-    const error: any = useRouteError(); //???
+    const error: any = useRouteError();
     console.error(error);
 
     return (

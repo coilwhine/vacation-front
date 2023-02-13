@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../App/authTokenSlice";
 import { UserModel, UserRole } from "../../../Models/UserModel";
