@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { login } from "../../App/authTokenSlice";
+import ErrorPage from "../ErrorPage/ErrorPage";
+import ReportsPage from "../Header/UserMenu/ReportsPage/ReportsPage";
 import AuthForms from "./AuthForms/AuthForms";
 import "./Content.scss";
 import Vacations from "./Vacations/Vacations";
@@ -19,7 +22,11 @@ function Content(): JSX.Element {
 
     return (
         <div className="Content">
-            {isloged ? <Vacations /> : <AuthForms />}
+            <Routes>
+                <Route path="/" element={isloged ? <Vacations /> : <AuthForms />} />
+                <Route path="/reports" element={<ReportsPage />} />
+                <Route path='*' element={<Navigate to="/" />} />
+            </Routes>
         </div>
     );
 }

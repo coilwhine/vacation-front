@@ -60,11 +60,10 @@
         box-shadow: var(--big-shadow);
         border-radius: var(--big-border-radius);
 
-        button {
-            border: none;
-            background-color: transparent;
-            width: 8em;
+        a {
+            width: 7em;
             font-weight: bold;
+            text-align: center;
             color: var(--secondary-color);
 
             &.logout-btn {

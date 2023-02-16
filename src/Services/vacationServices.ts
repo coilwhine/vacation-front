@@ -6,7 +6,11 @@ class VacationServices {
 
 
     async getAllVacations() {
-        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}`)
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}`, {
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        })
         return response.data;
     }
 
@@ -27,19 +31,31 @@ class VacationServices {
     }
 
     async getVacationById(id: string) {
-        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}${id}`)
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}${id}`, {
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        })
         return response.data;
     }
 
     async postNewVacation(vacation: FormData) {
 
-        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}`, vacation);
+        const response = await axios.post<ResponseType>(`${fetchURL.vacationsFetchURL}`, vacation, {
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        });
         return response.data;
     }
 
     async deleteVacation(vacationId: number) {
 
-        const response = await axios.delete<ResponseType>(`${fetchURL.vacationsFetchURL}${vacationId}`);
+        const response = await axios.delete<ResponseType>(`${fetchURL.vacationsFetchURL}${vacationId}`, {
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        });
         return response.data;
     }
 
@@ -74,7 +90,31 @@ class VacationServices {
 
     async getVacationLikes(id: number) {
 
-        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}vacationlikes`, { params: { id: id } });
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}vacationlikes`, {
+            params: { id: id },
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        });
+        return response.data;
+    }
+
+    async getVacationAndLikes() {
+
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}reports`, {
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        });
+        return response.data;
+    }
+
+    async downloadFile() {
+        const response = await axios.get<ResponseType>(`${fetchURL.vacationsFetchURL}download`, {
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        });
         return response.data;
     }
 

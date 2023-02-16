@@ -22,35 +22,50 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
 
 
     useEffect(() => {
-        vacationServices.getVacationLikes(cardData.id).then((res: any) => {
-            let likeCounter = 0
-            res.map((vac: any) => {
-                likeCounter++
-            })
-            setLikes(likeCounter)
-        })
+        try {
+            vacationServices.getVacationLikes(cardData.id).then((res: any) => {
+                let likeCounter = 0
+                res.map((vac: any) => {
+                    likeCounter++
+                })
+                setLikes(likeCounter)
 
-        vacationServices.getUserLikedVacation().then((res: any) => {
-            const arrayOfMatchingLikes = res.filter((like: { user_id: number, vacation_id: number }) => {
-                return +cardData.id === +like.vacation_id;
             })
 
-            if (arrayOfMatchingLikes.length > 0) {
-                setIsLiked(true)
-            } else {
-                setIsLiked(false)
-            }
-        })
+
+            vacationServices.getUserLikedVacation().then((res: any) => {
+                const arrayOfMatchingLikes = res.filter((like: { user_id: number, vacation_id: number }) => {
+                    return +cardData.id === +like.vacation_id;
+                })
+
+                if (arrayOfMatchingLikes.length > 0) {
+                    setIsLiked(true)
+                } else {
+                    setIsLiked(false)
+                }
+            })
+
+        } catch (err) {
+            console.error(err)
+        }
     }, [render])
 
     async function likeBtnFunc() {
-        if (isLiked) {
-            await vacationServices.postUnLikeVacation(cardData.id)
-            dispatch(setRender(render + 1))
-        } else if (!isLiked) {
-            await vacationServices.postLikeVacation(cardData.id)
-            dispatch(setRender(render + 1))
+
+        try {
+
+            if (isLiked) {
+                await vacationServices.postUnLikeVacation(cardData.id);
+                dispatch(setRender(render + 1));
+            } else if (!isLiked) {
+                await vacationServices.postLikeVacation(cardData.id);
+                dispatch(setRender(render + 1));
+            }
+
+        } catch (err) {
+            console.error(err)
         }
+
     }
 
     return (
