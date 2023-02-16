@@ -8,7 +8,11 @@ import vacationServices from "../../../../Services/vacationServices";
 import { useOnClickOutside } from "../../../../Utils/onClickOutSideHook";
 import "./AddVacationForm.scss";
 
-function AddVacationForm(props: any): JSX.Element {
+interface OwnProps {
+    setOpenNewVacationForm: any
+}
+
+function AddVacationForm(props: OwnProps): JSX.Element {
 
     const dispatch = useDispatch();
     const render = useSelector((state: any) => state.render);
@@ -50,7 +54,7 @@ function AddVacationForm(props: any): JSX.Element {
     }
 
     const refOne = useRef<any>();
-    useOnClickOutside(refOne, () => props.isOpen(false))
+    useOnClickOutside(refOne, () => props.setOpenNewVacationForm(false))
 
     return (
         <div className="AddVacationForm" ref={refOne}>

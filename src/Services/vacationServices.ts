@@ -49,6 +49,16 @@ class VacationServices {
         return response.data;
     }
 
+    async putEditVacation(vacation: FormData) {
+
+        const response = await axios.put<ResponseType>(`${fetchURL.vacationsFetchURL}`, vacation, {
+            headers: {
+                authentication: window.localStorage.getItem('token')
+            }
+        });
+        return response.data;
+    }
+
     async deleteVacation(vacationId: number) {
 
         const response = await axios.delete<ResponseType>(`${fetchURL.vacationsFetchURL}${vacationId}`, {

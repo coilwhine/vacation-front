@@ -68,7 +68,7 @@ function UserMenu(): JSX.Element {
                 </div>}
 
             </div>
-            {openNewVacationForm && <AddVacationForm isOpen={setOpenNewVacationForm} />}
+            {openNewVacationForm && <AddVacationForm setOpenNewVacationForm={setOpenNewVacationForm} />}
         </>
     );
 }

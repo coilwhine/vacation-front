@@ -10,14 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { setRender } from "../../../../../App/renderSlice copy";
 import { UserModel } from "../../../../../Models/UserModel";
 import DeletePopup from "./DeletePopup/DeletePopup";
+import EditForm from "./EditForm/EditForm";
 
 function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
 
     const dispatch = useDispatch();
     const userData: UserModel = useSelector((state: any) => state.authToken);
-    const [isLiked, setIsLiked] = useState<boolean>(false)
-    const [likes, setLikes] = useState(0)
-    const [deletePopup, setDeletePopUp] = useState(false)
+    const [isLiked, setIsLiked] = useState<boolean>(false);
+    const [likes, setLikes] = useState(0);
+    const [deletePopup, setDeletePopUp] = useState(false);
+    const [editFormOpen, setEditFormOpen] = useState(false);
     const render = useSelector((state: any) => state.render);
 
 
@@ -25,7 +27,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
         try {
             vacationServices.getVacationLikes(cardData.id).then((res: any) => {
                 let likeCounter = 0
-                res.map((vac: any) => {
+                res.map(() => {
                     likeCounter++
                 })
                 setLikes(likeCounter)
@@ -77,7 +79,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
                             <h2>{cardData.destination}</h2>
                             {userData.userRole !== 1 && <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />}
                         </div>
-                        {userData.userRole === 1 && <CardTools cardId={cardData.id} delPopUp={setDeletePopUp} />}
+                        {userData.userRole === 1 && <CardTools cardId={cardData.id} delPopUp={setDeletePopUp} setEditFormOpen={setEditFormOpen} />}
                     </div>
                 </header>
                 <div className="card-body">
@@ -94,6 +96,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
                 </div>
             </div>
             {deletePopup && <DeletePopup cardId={cardData.id} popUpState={setDeletePopUp} />}
+            {editFormOpen && <EditForm cardData={cardData} setEditFormOpen={setEditFormOpen} />}
         </>
     );
 }
