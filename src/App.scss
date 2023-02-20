@@ -10,7 +10,9 @@
         width: 100%;
         border-radius: var(--big-border-radius);
         box-shadow: var(--big-shadow);
-        background-color: var(--main-color);
+        background: var(--transperent-main-color);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
 
         .form-div {
             display: flex;

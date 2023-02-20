@@ -18,20 +18,21 @@ ChartJS.register(
     CategoryScale,
     LinearScale,
     BarElement,
-    Title,
+    Title, // none
     Tooltip,
-    Legend
+    Legend // none
 );
 
 const options = {
     responsive: true,
     plugins: {
         legend: {
-            position: 'top' as const,
+            display: false,
+            // position: 'bottom' as const,
         },
         title: {
-            display: true,
-            text: 'Chart.js Bar Chart',
+            display: false,
+            // text: '',
         },
     }
 };
@@ -43,7 +44,7 @@ let data = {
     datasets: [
         {
             label: '',
-            data: [],
+            data: [''],
             backgroundColor: 'transperent',
         },
     ],
@@ -79,7 +80,6 @@ function ReportsPage(): JSX.Element {
     }, [])
 
     useEffect(() => {
-        console.log(reportsData)
 
         if (reportsData) {
             setChartData(
@@ -101,7 +101,7 @@ function ReportsPage(): JSX.Element {
 
     return (
         <div className="ReportsPage">
-            <h1>HHeeeloleokls</h1>
+            <h1>Admin Raports - {new Date().toLocaleDateString()}</h1>
             <Bar className="chart" options={options} data={chartData ? chartData : data} />
             <button className="chart-btn" onClick={() => navigate("/")}>Back To Vacation</button>
         </div>
