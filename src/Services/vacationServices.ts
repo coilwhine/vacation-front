@@ -49,9 +49,9 @@ class VacationServices {
         return response.data;
     }
 
-    async putEditVacation(vacation: FormData) {
+    async putEditVacation(vacation: FormData, vacationId: number) {
 
-        const response = await axios.put<ResponseType>(`${fetchURL.vacationsFetchURL}`, vacation, {
+        const response = await axios.put<ResponseType>(`${fetchURL.vacationsFetchURL}${vacationId}`, vacation, {
             headers: {
                 authentication: window.localStorage.getItem('token')
             }

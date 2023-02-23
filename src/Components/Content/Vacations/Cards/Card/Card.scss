@@ -20,6 +20,7 @@
         border-radius: var(--small-border-radius);
         background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4)), url("https://images.unsplash.com/photo-1566371486490-560ded23b5e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80");
         background-size: cover;
+        background-position: center;
 
         .card-header-content {
             box-sizing: border-box;

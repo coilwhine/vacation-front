@@ -73,7 +73,13 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
     return (
         <>
             <div className="Card">
-                <header className="card-header">
+
+                <header
+                    className="card-header"
+                    style={{
+                        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4)), url(https://daniel-vacation.s3.eu-west-1.amazonaws.com/${cardData.image})`
+                    }}>
+
                     <div className="card-header-content">
                         <div className="card-header-top">
                             <h2>{cardData.destination}</h2>

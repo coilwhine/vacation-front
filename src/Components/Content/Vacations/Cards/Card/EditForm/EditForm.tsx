@@ -20,10 +20,12 @@ function EditForm(props: OwnProps): JSX.Element {
     const { register, handleSubmit, reset } = useForm<VacationModel>();
     const [selectedImage, setSelectedImage] = useState<any>();
     const [invalidEndDate, setInvalidEndDate] = useState<boolean>(false);
+    const [invalidImage, setInvalidImage] = useState<boolean>(false);
 
     async function onSubmitEditVacation(data: VacationModel) {
 
         setInvalidEndDate(false)
+        setInvalidImage(false)
 
         if (Date.parse(data.startDate) > Date.parse(data.endDate)) {
             setInvalidEndDate(true)
@@ -37,11 +39,20 @@ function EditForm(props: OwnProps): JSX.Element {
             formDataVacation.append("startDate", data.startDate)
             formDataVacation.append("endDate", data.endDate)
             formDataVacation.append("price", data.price.toString())
-            formDataVacation.append("image", selectedImage)
             formDataVacation.append("id", props.cardData.id.toString())
+            if (selectedImage) {
+                formDataVacation.append("image", selectedImage)
 
-            await vacationServices.putEditVacation(formDataVacation);
+            }
+
+            if (selectedImage.size > 500000) {
+                setInvalidImage(true);
+                return;
+            }
+
+            await vacationServices.putEditVacation(formDataVacation, props.cardData.id);
             reset();
+            props.setEditFormOpen(false);
             dispatch(setRender(render + 1));
         } catch (err: AxiosError | any) {
             console.error(err);
@@ -78,7 +89,16 @@ function EditForm(props: OwnProps): JSX.Element {
 
                 <div className="form-div">
                     <label className="form-label" htmlFor="edit-vacation-image-input">image</label>
-                    <input onChange={(e: any) => setSelectedImage(e.target.files[0])} id="edit-vacation-image-input" className="form-input form-img" type="file" required />
+                    <input onChange={(e: any) => {
+                        setSelectedImage(e.target.files[0])
+                        if (e.target.files[0].size > 500000) {
+                            setInvalidImage(true);
+                        } else {
+                            setInvalidImage(false);
+                        }
+                    }} id="edit-vacation-image-input" className="form-input form-img" type="file" />
+
+                    {invalidImage && <span className="error-span">Image size is too big</span>}
                 </div>
                 <button className="form-btn">Edit Vacation</button>
             </form>

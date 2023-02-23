@@ -20,6 +20,7 @@ function AddVacationForm(props: OwnProps): JSX.Element {
     const [selectedImage, setSelectedImage] = useState<any>();
     const [invalidStartDate, setInvalidStartDate] = useState<boolean>(false);
     const [invalidEndDate, setInvalidEndDate] = useState<boolean>(false);
+    const [invalidImage, setInvalidImage] = useState<boolean>(false);
 
     async function onSubmitVacation(data: VacationModel) {
 
@@ -45,8 +46,14 @@ function AddVacationForm(props: OwnProps): JSX.Element {
             formDataVacation.append("price", data.price.toString())
             formDataVacation.append("image", selectedImage)
 
+            if (selectedImage.size > 500000) {
+                setInvalidImage(true);
+                return;
+            }
+
             await vacationServices.postNewVacation(formDataVacation);
             reset();
+            props.setOpenNewVacationForm(false);
             dispatch(setRender(render + 1));
         } catch (err: AxiosError | any) {
             console.error(err);
@@ -84,7 +91,15 @@ function AddVacationForm(props: OwnProps): JSX.Element {
 
                 <div className="form-div">
                     <label className="form-label" htmlFor="vacation-image-input">image</label>
-                    <input onChange={(e: any) => setSelectedImage(e.target.files[0])} id="vacation-image-input" className="form-input form-img" type="file" required />
+                    <input onChange={(e: any) => {
+                        setSelectedImage(e.target.files[0])
+                        if (e.target.files[0].size > 500000) {
+                            setInvalidImage(true);
+                        } else {
+                            setInvalidImage(false);
+                        }
+                    }} id="vacation-image-input" className="form-input form-img" type="file" required />
+                    {invalidImage && <span className="error-span">Image size is too big</span>}
                 </div>
                 <button className="form-btn">Add Vacation</button>
             </form>
