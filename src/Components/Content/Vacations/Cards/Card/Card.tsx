@@ -70,6 +70,7 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
 
     }
 
+
     return (
         <>
             <div className="Card">
@@ -91,9 +92,9 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
                 <div className="card-body">
                     <div className="card-dates">
                         <AiFillCalendar />
-                        <span className="card-date">{dateFormater(cardData.startDate).fullDate}</span>
+                        <span className="card-date">{dateFormater(cardData.startDate)}</span>
                         <span className="card-date">-</span>
-                        <span className="card-date">{dateFormater(cardData.endDate).fullDate}</span>
+                        <span className="card-date">{dateFormater(cardData.endDate)}</span>
                     </div>
                     <p className="card-p">{cardData.description}</p>
                     <div className="card-price-wraper">
