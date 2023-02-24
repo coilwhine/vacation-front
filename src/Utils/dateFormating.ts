@@ -1,9 +1,5 @@
-export function dateFormater(date: string) {
+import dayjs from "dayjs";
 
-    const day = new Date(Date.parse(date)).getUTCDate() + 1;
-    const month = new Date(Date.parse(date)).getMonth() + 1;
-    const year = new Date(Date.parse(date)).getFullYear();
-    const formatedDate = `${day}.${month}.${year}`;
-
-    return formatedDate.toString()
+export function dateFormater(parmsDate: string) {
+    return dayjs(parmsDate).format('DD.MM.YYYY')
 }

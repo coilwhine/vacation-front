@@ -45,7 +45,7 @@ function EditForm(props: OwnProps): JSX.Element {
 
             }
 
-            if (selectedImage.size > 500000) {
+            if (selectedImage && selectedImage.size > 500000) {
                 setInvalidImage(true);
                 return;
             }

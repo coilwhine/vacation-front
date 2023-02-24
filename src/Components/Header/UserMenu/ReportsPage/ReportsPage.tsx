@@ -28,11 +28,9 @@ const options = {
     plugins: {
         legend: {
             display: false,
-            // position: 'bottom' as const,
         },
         title: {
             display: false,
-            // text: '',
         },
     }
 };
@@ -68,15 +66,19 @@ function ReportsPage(): JSX.Element {
     const [reportsData, setReportsData] = useState<ReportsDataModel[] | null>(null);
     const [chartData, setChartData] = useState<any | null>(null);
 
-    if (user.userRole === 0) {
-        navigate("/")
-    }
-
     useEffect(() => {
-        vacationServices.getVacationAndLikes()
-            .then((res: any) => {
-                setReportsData(res)
-            })
+        if (user.userRole === 0) {
+            navigate("/");
+            return;
+        };
+        try {
+            vacationServices.getVacationAndLikes()
+                .then((res: any) => {
+                    setReportsData(res);
+                })
+        } catch (err) {
+            console.error(err)
+        }
     }, [])
 
     useEffect(() => {
