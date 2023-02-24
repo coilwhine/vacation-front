@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authTokenReducer from "./authTokenSlice";
-import authFormReducr from "./authFormsSlice";
-import renderReducr from "./renderSlice copy";
+import authFormReducer from "./authFormsSlice";
+import renderReducer from "./renderSlice";
+import colorModeReducer from "./colorModeSlice";
 
 export default configureStore({
     reducer: {
         authToken: authTokenReducer,
-        authForm: authFormReducr,
-        render: renderReducr
+        authForm: authFormReducer,
+        render: renderReducer,
+        colorMode: colorModeReducer
     }
 })

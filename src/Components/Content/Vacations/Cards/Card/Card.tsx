@@ -7,7 +7,7 @@ import { VacationModel } from "../../../../../Models/VacationModel";
 import vacationServices from "../../../../../Services/vacationServices";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setRender } from "../../../../../App/renderSlice copy";
+import { setRender } from "../../../../../App/renderSlice";
 import { UserModel } from "../../../../../Models/UserModel";
 import DeletePopup from "./DeletePopup/DeletePopup";
 import EditForm from "./EditForm/EditForm";

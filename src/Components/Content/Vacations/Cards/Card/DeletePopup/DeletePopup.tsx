@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setRender } from "../../../../../../App/renderSlice copy";
+import { setRender } from "../../../../../../App/renderSlice";
 import vacationServices from "../../../../../../Services/vacationServices";
 import "./DeletePopup.scss";
 

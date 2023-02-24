@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./UserMenu.scss";
 import vacationServices from "../../../Services/vacationServices";
+import { dark, light } from "../../../App/colorModeSlice";
 
 function UserMenu(): JSX.Element {
 
@@ -16,9 +17,22 @@ function UserMenu(): JSX.Element {
     const [openNewVacationForm, setOpenNewVacationForm] = useState(false)
     const dispatch = useDispatch();
     const user: UserModel = useSelector((state: any) => state.authToken);
+    const coloeMode: string = useSelector((state: any) => state.colorMode);
 
     const refOne = useRef<any>();
     useOnClickOutside(refOne, () => setOpenMenu(false))
+
+    function switchColorTheme() {
+        if (coloeMode === 'light') {
+            console.log('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            dispatch(dark());
+        } else {
+            console.log('light');
+            document.documentElement.setAttribute('data-theme', 'light');
+            dispatch(light());
+        }
+    }
 
     async function onDownloadClick() {
         try {
@@ -33,9 +47,6 @@ function UserMenu(): JSX.Element {
             console.error(err)
         }
     }
-
-
-
 
     return (
         <>
@@ -59,6 +70,11 @@ function UserMenu(): JSX.Element {
                         setOpenMenu(false);
                         setOpenNewVacationForm(true)
                     }}>add vacation</a>}
+
+                    {<a onClick={() => {
+                        setOpenMenu(false);
+                        switchColorTheme()
+                    }}>{coloeMode === 'light' ? "dark mode" : "light mode"}</a>}
 
                     <a className="logout-btn" onClick={() => {
                         dispatch(logout())
