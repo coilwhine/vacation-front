@@ -1,14 +1,28 @@
 .Header {
-    position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
     background-color: var(--main-color);
 
-    h1 {
-        font-size: 4em;
-        font-family: 'Satisfy', cursive;
-        color: var(--secondary-text-color);
+    .content-wraper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        h1 {
+            font-size: 4em;
+            font-family: 'Satisfy', cursive;
+            color: var(--secondary-text-color);
+            text-shadow: var(--small-shadow);
+            cursor: default;
+
+            &:hover {
+                text-shadow: none;
+            }
+        }
     }
 }

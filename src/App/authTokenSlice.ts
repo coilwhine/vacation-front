@@ -6,15 +6,19 @@ let token = window.localStorage.getItem('token');
 let initialState = null;
 
 if (token) {
+    try {
+        let userToken = jwtDecode<TokenModel>(token);
 
-    let userToken = jwtDecode<TokenModel>(token);
+        initialState = {
+            sub: userToken.sub,
+            email: userToken.email,
+            firstName: userToken.firstName,
+            lastName: userToken.lastName,
+            userRole: userToken.userRole
+        };
 
-    initialState = {
-        sub: userToken.sub,
-        email: userToken.email,
-        firstName: userToken.firstName,
-        lastName: userToken.lastName,
-        userRole: userToken.userRole
+    } catch (error) {
+        window.localStorage.removeItem('token')
     }
 }
 
