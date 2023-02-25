@@ -13,12 +13,14 @@
         align-items: center;
         width: 100%;
 
-        h1 {
+        .heading {
+            text-decoration: none;
             font-size: 4em;
             font-family: 'Satisfy', cursive;
             color: var(--secondary-text-color);
             text-shadow: var(--small-shadow);
-            cursor: default;
+            cursor: pointer;
+            transition: 100ms ease-in-out;
 
             &:hover {
                 text-shadow: none;

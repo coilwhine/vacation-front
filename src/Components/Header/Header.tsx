@@ -7,7 +7,7 @@ function Header(): JSX.Element {
     return (
         <div className="Header">
             <div className="content-wraper">
-                <h1>Vacation</h1>
+                <a className="heading" href="/">Vacation</a>
                 <UserMenu />
             </div>
         </div>
