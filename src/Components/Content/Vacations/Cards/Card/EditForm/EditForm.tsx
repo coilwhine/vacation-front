@@ -67,24 +67,24 @@ function EditForm(props: OwnProps): JSX.Element {
             <form className="main-form" onSubmit={handleSubmit(onSubmitEditVacation)}>
                 <div className="form-div">
                     <label className="form-label" htmlFor="edit-vacation-destination-input">destination</label>
-                    <input id="edit-vacation-destination-input" className="form-input" type="text" {...register("destination")} required />
+                    <input id="edit-vacation-destination-input" className="form-input" type="text" value={props.cardData.destination} {...register("destination")} required />
                 </div>
                 <div className="form-div">
                     <label className="form-label" htmlFor="edit-vacation-description-input">description</label>
-                    <textarea id="edit-vacation-description-input" className="form-input form-textarea" {...register("description")} required />
+                    <textarea id="edit-vacation-description-input" className="form-input form-textarea" value={props.cardData.description} {...register("description")} required />
                 </div>
                 <div className="form-div">
                     <label className="form-label" htmlFor="edit-vacation-startDate-input">start</label>
-                    <input id="edit-vacation-startDate-input" className="form-input" type="date" {...register("startDate")} required />
+                    <input id="edit-vacation-startDate-input" className="form-input" type="date" value={props.cardData.startDate} {...register("startDate")} required />
                 </div>
                 <div className="form-div">
                     <label className="form-label" htmlFor="edit-vacation-endDate-input">end</label>
-                    <input id="edit-vacation-endDate-input" className="form-input" type="date" {...register("endDate")} required />
+                    <input id="edit-vacation-endDate-input" className="form-input" type="date" value={props.cardData.endDate} {...register("endDate")} required />
                     {invalidEndDate && <span className="error-span">invalid end date</span>}
                 </div>
                 <div className="form-div">
                     <label className="form-label" htmlFor="edit-vacation-price-input">price</label>
-                    <input id="edit-vacation-price-input" className="form-input" type="number" {...register("price")} min="0" max="10000" required />
+                    <input id="edit-vacation-price-input" className="form-input" type="number" value={props.cardData.price} {...register("price")} min="0" max="10000" required />
                 </div>
 
                 <div className="form-div">
@@ -107,3 +107,6 @@ function EditForm(props: OwnProps): JSX.Element {
 }
 
 export default EditForm;
+
+
+// להוסיף שהוא יביא את התוכן לפני העריכה
