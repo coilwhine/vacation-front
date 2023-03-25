@@ -7,7 +7,7 @@ function LikeBtn(props: any): JSX.Element {
         <div className="LikeBtn" onClick={props.onClickEvent}>
             <div className={props.likeState ? " liked like-wraper" : "like-wraper"}>
                 <span className="like-counter">{props.numberOfLikes}</span>
-                <AiFillHeart />
+                <AiFillHeart className="logo" />
             </div>
         </div>
     );

@@ -24,11 +24,9 @@ function UserMenu(): JSX.Element {
 
     function switchColorTheme() {
         if (coloeMode === 'light') {
-            console.log('dark');
             document.documentElement.setAttribute('data-theme', 'dark');
             dispatch(dark());
         } else {
-            console.log('light');
             document.documentElement.setAttribute('data-theme', 'light');
             dispatch(light());
         }
@@ -90,7 +88,4 @@ function UserMenu(): JSX.Element {
 }
 
 export default UserMenu;
-function downloadFile() {
-    throw new Error("Function not implemented.");
-}
 

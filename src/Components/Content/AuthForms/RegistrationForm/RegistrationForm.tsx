@@ -50,7 +50,7 @@ function RegistrationForm(): JSX.Element {
                 </div>
                 <div className="form-div">
                     <label className="form-label" htmlFor="register-password-input">password</label>
-                    <input id="register-password-input" className="form-input" type="password" minLength={4} {...register("password")} required />
+                    <input id="register-password-input" className="form-input" type="password" minLength={4} {...register("password")} required pattern="^\S+$" />
                 </div>
                 <button className="form-btn">Register</button>
             </form>

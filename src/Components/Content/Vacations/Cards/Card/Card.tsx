@@ -78,12 +78,12 @@ function Card({ cardData }: { cardData: VacationModel }): JSX.Element {
                 <header
                     className="card-header"
                     style={{
-                        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.4)), url(https://daniel-vacation.s3.eu-west-1.amazonaws.com/${cardData.image})`
+                        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2)), url(https://daniel-vacation.s3.eu-west-1.amazonaws.com/${cardData.image})`
                     }}>
 
                     <div className="card-header-content">
                         <div className="card-header-top">
-                            <h2>{cardData.destination}</h2>
+                            <h2 className="card-heading">{cardData.destination}</h2>
                             {userData.userRole !== 1 && <LikeBtn className='like-btn' key={cardData.id} numberOfLikes={likes} onClickEvent={likeBtnFunc} likeState={isLiked} />}
                         </div>
                         {userData.userRole === 1 && <CardTools cardId={cardData.id} delPopUp={setDeletePopUp} setEditFormOpen={setEditFormOpen} />}

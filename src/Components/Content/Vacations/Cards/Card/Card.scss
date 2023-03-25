@@ -22,6 +22,10 @@
         background-size: cover;
         background-position: center;
 
+        .card-heading {
+            color: var(--card-heading-text-color);
+        }
+
         .card-header-content {
             box-sizing: border-box;
             display: flex;

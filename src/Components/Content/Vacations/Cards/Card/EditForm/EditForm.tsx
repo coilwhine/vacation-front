@@ -96,7 +96,9 @@ function EditForm(props: OwnProps): JSX.Element {
                         } else {
                             setInvalidImage(false);
                         }
-                    }} id="edit-vacation-image-input" className="form-input form-img" type="file" />
+                    }} id="edit-vacation-image-input" className="form-input form-img" type="file" style={{
+                        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)), url(https://daniel-vacation.s3.eu-west-1.amazonaws.com/${props.cardData.image})`
+                    }} />
 
                     {invalidImage && <span className="error-span">Image size is too big</span>}
                 </div>
